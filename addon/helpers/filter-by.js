@@ -43,7 +43,8 @@ export default Helper.extend({
       filterFn = (item) => !!get(item, byPath);
     }
 
-    let cp = filter(`array.@each.${byPath}`, filterFn);
+    const [ minimumByPath]  = byPath.split('.');
+    const cp = filter(`array.@each.${minimumByPath}`, filterFn);
 
     defineProperty(this, 'content', cp);
   }),
